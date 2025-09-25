@@ -8,7 +8,7 @@ function LoginPage() {
 
   return (
     <div>
-      Hello Login's here
+      Hello Login's here!
     
     </div>
   )
