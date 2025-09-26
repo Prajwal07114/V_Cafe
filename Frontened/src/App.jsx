@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route,Routes } from 'react-router-dom'
+import {useEffect,useState} from 'react'
 import LoginPage from './pages/LoginPage'
 import SignupPage from './pages/SignupPage'
 import CafePage from './pages/CafePage'
@@ -7,7 +8,12 @@ import useAuthStore from './Store/UseAuthStore'
 
 function App() {
 
-  const {AuthStore,isLoading}=useAuthStore();
+  const {checkAuth,isCheckingAuth,AuthUser}=useAuthStore();
+  useEffect (()=>{
+     checkAuth();
+  },[checkAuth])
+  console.log({AuthUser});
+  
   return (   
    <Routes >
     <Route path='/login' element={<LoginPage />} />

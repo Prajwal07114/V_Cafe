@@ -114,7 +114,7 @@ return res.status(200).json({message:"data updated"})
  } 
 
 }
-np
+
 export const authcheck = async (req,res)=>{
   try {
     return res.status(200).json(req.user)
