@@ -1,8 +1,10 @@
 import {create} from "zustand";
 import {axiosInstance} from "../lib/axios"
+import toast from "react-toast"
 const useAuthStore = create((set)=>({
  authUser:null,
  isCheckingAuth:true,
+ isSigningUp:false,
 
 checkAuth :async()=>{
 try {
@@ -18,5 +20,16 @@ finally {
 }
 }))
 
-
+Signup : async (data)=>{
+  try {
+    const res = await axiosInstance.post("auth/signup")
+    set ({authUser:res.data})
+    toast.success("Account created Successfully")
+  } catch (error) {
+    toast.error(error.response.data.message);
+  }
+  finally{
+    set({isSigningUp:false})
+  }
+}
 export default useAuthStore;
